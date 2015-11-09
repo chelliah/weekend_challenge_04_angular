@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Message Board - Aron Thomas Weekend Challenge</title>
+    <link rel="stylesheet" href="/vendors/pure-min.css">
+    <link rel="stylesheet" href="/assets/styles/style.css">
+    <script type="text/javascript" src="/vendors/angular.min.js"></script>
+    <script type="text/javascript" src="/assets/scripts/appAdmin.js"></script>
+</head>
+<body>
+<div id ='layout' class="pure-g" ng-controller="PostController">
+    <div class="sidebar pure-u-1-3">
+        <header id="sidebarHeader">
+            <h1>Zeta Message Board</h1>
+            <p id="headerTag">Type in a message here</p>
+        </header>
+        <form id='entryForm' class="pure-form">
+            <fieldset id="entryField" class="pure-group">
+                <input type="text" class="pure-input-1" ng-model="values.postTitle" placeholder="Enter a Title">
+                <input type="text" class="pure-input-1" ng-model="values.userName" placeholder="Enter your name">
+                <textarea id="postText" class="pure-input-1" ng-model="values.postContent" placeholder="Type your message here"></textarea>
+            </fieldset>
+
+            <button id="submit" ng-click="clickButton(values)" class="pure-button pure-input-1-2">Submit</button>
+        </form>
+    </div>
+    <div id='mainContent' class="content pure-u-2-3">
+        <h4 class='content-subhead' id="mainContentHeader">Recent Posts</h4>
+        <div id="messageBoard" ng-repeat="post in valuesArray">
+            <div class="post">
+                <header class="postHead">
+                    <h2 class="title">{{post.title}}</h2>
+                    <p class="name-date">{{"Created on " + post.date + " by " + post.name}}</p>
+                </header>
+                <p class="postContent">{{post.text}}</p>
+                <button id='delete' ng-click="clickDelete(post)" class="pure-button">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
