@@ -20,10 +20,10 @@ router.use(bodyParser.urlencoded({expanded : true}));
 var Post = mongoose.model('Post', postSchema);
 
 
-router.delete('/data:id',function(req,res){
+router.delete('/data',function(req,res){
     console.log(req.query);
     console.log(req.params);
-    Post.findByIdAndRemove({"_id" : req.params.id}, function(err,data){
+    Post.findByIdAndRemove(req.query, function(err,data){
         if(err){
             console.log("u errored", err)
         }
