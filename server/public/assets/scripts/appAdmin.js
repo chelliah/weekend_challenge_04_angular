@@ -18,7 +18,7 @@ myApp.controller("PostController", ['$scope', '$http', function($scope,$http){
     $scope.clickDelete = function(post){
         console.log("does this work");
         console.log(post);
-        $http.delete('admin/data', {params: {_id: post._id}}).then(function(response){
+        $http.delete('admin/data' + post._id, {params: {_id: post._id}}).then(function(response){
             console.log(response);
             $scope.getData();
         })
